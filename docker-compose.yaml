@@ -9,10 +9,7 @@ services:
     image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
 
   open-webui:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: mallet-ia:latest
+    image: ghcr.io/samuel21tu/open-webui:main
     container_name: open-webui
     volumes:
       - open-webui:/app/backend/data
