@@ -40,7 +40,7 @@ RUN npm ci --force
 
 COPY . .
 ENV APP_BUILD_HASH=${BUILD_HASH}
-ENV NODE_OPTIONS="--max-old-space-size=3072"
+ENV NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=8192}"
 RUN npm run build
 
 ######## WebUI backend ########
