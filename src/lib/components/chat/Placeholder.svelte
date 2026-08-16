@@ -132,7 +132,7 @@
 			{:else}
 				<div class="flex flex-col items-center justify-center gap-4 w-full max-w-xl">
 					<img
-						src="/static/logo.svg"
+						src="/static/logo.png"
 						alt="MALLET IA Brasão"
 						class="h-28 w-auto mb-2 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]"
 					/>

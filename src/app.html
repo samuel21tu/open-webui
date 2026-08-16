@@ -10,10 +10,12 @@
 			sizes="96x96"
 			crossorigin="use-credentials"
 		/>
+		<link rel="icon" type="image/png" href="/static/favicon.png" crossorigin="use-credentials" />
 		<link
 			rel="icon"
-			type="image/svg+xml"
-			href="/static/favicon.svg"
+			type="image/png"
+			href="/static/favicon-96x96.png"
+			sizes="96x96"
 			crossorigin="use-credentials"
 		/>
 		<link rel="shortcut icon" href="/static/favicon.ico" crossorigin="use-credentials" />
@@ -68,7 +70,7 @@
 					metaThemeColorTag.setAttribute('content', '#090d09');
 				}
 
-				const preloadHref = '/static/logo.svg';
+				const preloadHref = '/static/logo.png';
 				const preload = document.createElement('link');
 				preload.rel = 'preload';
 				preload.as = 'image';
@@ -88,7 +90,7 @@
 					'position: absolute; width: auto; height: 7rem; top: 40%; left: 50%; transform: translateX(-50%); display:block;';
 				logo.loading = 'eager';
 				logo.fetchPriority = 'high';
-				logo.src = '/static/logo.svg';
+				logo.src = '/static/logo.png';
 
 				document.addEventListener('DOMContentLoaded', function () {
 					const splash = document.getElementById('splash-screen');
