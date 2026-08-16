@@ -1,0 +1,224 @@
+/* ========================================================
+   MALLET IA — TEMA DARK MILITAR MODERNO
+   Paleta: Grafite profundo + Verde Esmeralda + Oliva
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ── Variáveis globais ────────────────────────────────── */
+:root {
+  --mallet-bg-primary:    #080d08;
+  --mallet-bg-secondary:  #0d1410;
+  --mallet-bg-card:       #111a12;
+  --mallet-border:        #1a2e1c;
+  --mallet-green:         #10b981;
+  --mallet-green-dim:     #065f46;
+  --mallet-green-glow:    rgba(16, 185, 129, 0.15);
+  --mallet-text:          #d1fae5;
+  --mallet-text-dim:      #6b7280;
+  --mallet-accent:        #34d399;
+  --mallet-red:           #ef4444;
+}
+
+/* ── Fundo principal ──────────────────────────────────── */
+html.dark body,
+html.dark {
+  background-color: var(--mallet-bg-primary) !important;
+  color: var(--mallet-text) !important;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar */
+html.dark #sidebar,
+html.dark [data-sidebar],
+html.dark aside,
+html.dark nav[aria-label],
+html.dark .sidebar {
+  background-color: var(--mallet-bg-secondary) !important;
+  border-right: 1px solid var(--mallet-border) !important;
+}
+
+/* ── Área do chat ─────────────────────────────────────── */
+html.dark .chat-area,
+html.dark main,
+html.dark [id*="main"],
+html.dark .bg-white,
+html.dark .dark\:bg-gray-900 {
+  background-color: var(--mallet-bg-primary) !important;
+}
+
+/* ── Cards / painéis ─────────────────────────────────── */
+html.dark .rounded-lg,
+html.dark .rounded-xl,
+html.dark .rounded-2xl {
+  /* Only override cards, not all round corners */
+}
+
+html.dark .dark\:bg-gray-800 {
+  background-color: var(--mallet-bg-card) !important;
+}
+
+html.dark .dark\:bg-gray-850 {
+  background-color: #0e1710 !important;
+}
+
+/* ── Caixa de mensagem (input) ───────────────────────── */
+html.dark form textarea,
+html.dark form input[type="text"],
+html.dark #chat-input {
+  background-color: var(--mallet-bg-secondary) !important;
+  color: #e2f5e8 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+html.dark #chat-input-container {
+  background-color: transparent !important;
+}
+
+/* Borda da caixa de input */
+html.dark .dark\:bg-gray-900 form,
+html.dark [id*="input"] form {
+  border: 1px solid var(--mallet-border) !important;
+  background-color: var(--mallet-bg-secondary) !important;
+  border-radius: 1rem;
+}
+
+/* ── Bolhas de mensagem ───────────────────────────────── */
+/* Mensagens do usuário */
+html.dark .user-message .markdown,
+html.dark .user-message {
+  background: linear-gradient(135deg, #0d2818, #112015) !important;
+  border-left: 2px solid var(--mallet-green) !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Mensagens da IA */
+html.dark .assistant-message .markdown {
+  color: #d1fae5 !important;
+}
+
+/* ── Tipografia geral ─────────────────────────────────── */
+html.dark h1, html.dark h2, html.dark h3, html.dark h4 {
+  color: var(--mallet-accent) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: 0.05em;
+}
+
+html.dark p, html.dark li, html.dark span:not([class*="animate"]):not([class*="pulse"]) {
+  color: #c1d9c5;
+}
+
+/* Código inline */
+html.dark code {
+  background-color: #0a1a0c !important;
+  color: var(--mallet-accent) !important;
+  border: 1px solid var(--mallet-border);
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+/* Blocos de código */
+html.dark pre {
+  background-color: #060d07 !important;
+  border: 1px solid var(--mallet-border) !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.05);
+}
+
+html.dark pre code {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* ── Botões ───────────────────────────────────────────── */
+html.dark button:not([class*="hidden"]) {
+  transition: all 0.15s ease !important;
+}
+
+html.dark button:hover:not(:disabled) {
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Botão de enviar mensagem */
+html.dark #send-message-button,
+html.dark [id="send-message-button"] {
+  background-color: var(--mallet-green) !important;
+  color: #030a04 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4) !important;
+}
+
+html.dark #send-message-button:hover {
+  background-color: var(--mallet-accent) !important;
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.6) !important;
+}
+
+/* ── Scrollbar ────────────────────────────────────────── */
+html.dark ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: var(--mallet-bg-primary);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--mallet-green-dim);
+  border-radius: 2px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--mallet-green);
+}
+
+/* ── Navbar / topo ─────────────────────────────────────── */
+html.dark nav.sticky {
+  background: linear-gradient(to bottom, var(--mallet-bg-primary), transparent) !important;
+}
+
+html.dark [id="navbar-bg-gradient-to-b"] {
+  background: linear-gradient(to bottom, var(--mallet-bg-primary) 0%, rgba(8,13,8,0.6) 50%, transparent 100%) !important;
+}
+
+/* ── Splash screen ─────────────────────────────────────── */
+html.dark #splash-screen {
+  background: var(--mallet-bg-primary) !important;
+}
+
+/* ── Seleção de texto ─────────────────────────────────── */
+html.dark ::selection {
+  background-color: rgba(16, 185, 129, 0.35);
+  color: #d1fae5;
+}
+
+/* ── Bordas gerais ────────────────────────────────────── */
+html.dark .dark\:border-gray-700,
+html.dark .dark\:border-gray-800,
+html.dark .dark\:border-gray-850 {
+  border-color: var(--mallet-border) !important;
+}
+
+/* ── Tooltips ─────────────────────────────────────────── */
+html.dark [role="tooltip"],
+html.dark .tooltip {
+  background-color: var(--mallet-bg-card) !important;
+  border: 1px solid var(--mallet-border) !important;
+  color: var(--mallet-text) !important;
+}
+
+/* ── Efeito glow suave no logo ─────────────────────────── */
+#logo {
+  filter: drop-shadow(0 0 18px rgba(16, 185, 129, 0.5));
+}
+
+/* ── Animação pulse do badge ONLINE ───────────────────── */
+@keyframes mallet-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px rgba(16, 185, 129, 0.8); }
+  50%       { opacity: 0.5; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+}
+
+.animate-pulse {
+  animation: mallet-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+}
