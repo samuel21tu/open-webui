@@ -124,15 +124,18 @@
 		models.set(fetchedModels);
 
 		if (fetchedModels && fetchedModels.length > 0) {
-			const currentModels = $settings?.models ?? [];
-			if (!currentModels.length || !currentModels[0]) {
-				const firstModelId = fetchedModels[0].id;
-				console.log('Auto-selecting default model on startup:', firstModelId);
-				settings.set({
-					...$settings,
-					models: [firstModelId]
-				});
-			}
+			settings.update((currentSettings) => {
+				const currentModels = currentSettings?.models ?? [];
+				if (!currentModels.length || !currentModels[0]) {
+					const firstModelId = fetchedModels[0].id;
+					console.log('Auto-selecting default model on startup:', firstModelId);
+					return {
+						...currentSettings,
+						models: [firstModelId]
+					};
+				}
+				return currentSettings;
+			});
 		}
 	};
 
