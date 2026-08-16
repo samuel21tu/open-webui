@@ -117,12 +117,23 @@
 	};
 
 	const setModels = async () => {
-		models.set(
-			await getModels(
-				localStorage.token,
-				$config?.features?.enable_direct_connections ? ($settings?.directConnections ?? null) : null
-			)
+		const fetchedModels = await getModels(
+			localStorage.token,
+			$config?.features?.enable_direct_connections ? ($settings?.directConnections ?? null) : null
 		);
+		models.set(fetchedModels);
+
+		if (fetchedModels && fetchedModels.length > 0) {
+			const currentModels = $settings?.models ?? [];
+			if (!currentModels.length || !currentModels[0]) {
+				const firstModelId = fetchedModels[0].id;
+				console.log('Auto-selecting default model on startup:', firstModelId);
+				settings.set({
+					...$settings,
+					models: [firstModelId]
+				});
+			}
+		}
 	};
 
 	const setToolServers = async () => {

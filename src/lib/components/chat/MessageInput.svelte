@@ -2237,14 +2237,7 @@
 
 								<div class="self-end flex space-x-1 mr-1 shrink-0 gap-[0.5px]">
 									<div class="flex items-center">
-										<div class="mr-2 flex items-center">
-											<ModelSelector
-												bind:selectedModels
-												showSetDefault={!history?.currentId}
-												placement="auto"
-												align="end"
-											/>
-										</div>
+										<!-- ModelSelector hidden from chat interface as configured -->
 									</div>
 
 									{#if hasChatVariables}

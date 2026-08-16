@@ -142,6 +142,11 @@
 					<div class="text-xs md:text-sm font-mono tracking-[0.3em] text-emerald-600/80 dark:text-emerald-500/60 uppercase">
 						SISTEMA MILITAR CENTRAL
 					</div>
+					{#if currentGreeting}
+						<div class="mt-3 px-4 py-2.5 text-xs md:text-sm text-gray-200 font-sans italic max-w-xl mx-auto leading-relaxed border-l-2 border-emerald-500/70 bg-emerald-950/40 rounded-r-xl text-left shadow-md">
+							"{currentGreeting}"
+						</div>
+					{/if}
 				</div>
 			{/if}
 

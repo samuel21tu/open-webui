@@ -637,17 +637,21 @@ class Loader:
                 file_content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
                 or file_ext == 'docx'
             ):
-                loader = Docx2txtLoader(file_path)
+                try:
+                    loader = Docx2txtLoader(file_path)
+                except Exception as e:
+                    log.warning(f"Docx2txtLoader failed for {file_path}, falling back to TextLoader: {e}")
+                    loader = TextLoader(file_path, encoding=self._detect_text_encoding(file_path))
             elif file_ext == 'doc' or file_content_type == 'application/msword':
                 try:
                     from langchain_community.document_loaders import UnstructuredWordDocumentLoader
 
                     loader = UnstructuredWordDocumentLoader(file_path)
-                except ImportError:
-                    raise ValueError(
-                        "Processing .doc files requires the 'unstructured' package. "
-                        'Install it with: pip install unstructured'
+                except Exception as e:
+                    log.warning(
+                        f"UnstructuredWordDocumentLoader failed for {file_path}, falling back to TextLoader: {e}"
                     )
+                    loader = TextLoader(file_path, encoding=self._detect_text_encoding(file_path))
             elif file_content_type in [
                 'application/vnd.ms-excel',
                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
