@@ -53,7 +53,7 @@
 
 	export let imageGenerationEnabled = false;
 	export let codeInterpreterEnabled = false;
-	export let webSearchEnabled = false;
+	export let webSearchEnabled = true;
 
 	export let onUpload: Function = (e) => {};
 	export let onSelect = (e) => {};
@@ -130,23 +130,18 @@
 					}}
 				/>
 			{:else}
-				<div class="flex flex-col items-center gap-3 w-full max-w-xl">
+				<div class="flex flex-col items-center justify-center gap-4 w-full max-w-xl">
 					<img
-						src="/static/favicon.svg"
+						src="/static/logo.svg"
 						alt="MALLET IA Brasão"
-						class="h-20 w-auto drop-shadow-[0_0_15px_rgba(16,185,129,0.3)] mb-1"
+						class="h-28 w-auto mb-2 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]"
 					/>
-					<div class="text-3xl font-bold tracking-wider text-emerald-400 font-mono">
+					<div class="text-3xl md:text-4xl font-bold tracking-widest text-emerald-500 font-mono">
 						MALLET IA
 					</div>
-					<div class="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400/80 bg-emerald-950/60 px-3 py-1 rounded-md border border-emerald-800/40">
-						[ SISTEMA MILITAR CENTRAL - STATUS: OPERACIONAL ]
+					<div class="text-xs md:text-sm font-mono tracking-[0.3em] text-emerald-600/80 dark:text-emerald-500/60 uppercase">
+						SISTEMA MILITAR CENTRAL
 					</div>
-					{#if currentGreeting}
-						<div class="mt-2 px-4 py-3 rounded-lg bg-emerald-950/30 border border-emerald-900/50 text-sm font-sans text-gray-200 leading-relaxed max-w-xl shadow-inner">
-							"{currentGreeting}"
-						</div>
-					{/if}
 				</div>
 			{/if}
 
@@ -172,7 +167,7 @@
 						{toolServers}
 						{stopResponse}
 						{createMessagePair}
-						placeholder={$i18n.t('How can I help you today?')}
+						placeholder={currentGreeting || $i18n.t('How can I help you today?')}
 						{onChange}
 						{onUpload}
 						{onWebSearchToggle}

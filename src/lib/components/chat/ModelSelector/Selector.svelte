@@ -220,8 +220,8 @@
 	$: selectedCount = selectedValues.filter(Boolean).length;
 	$: triggerLabel = selectedModel
 		? compareEnabled && selectedCount > 1
-			? `${selectedModel.label} +${selectedCount - 1}`
-			: selectedModel.label
+			? `${$config?.WEBUI_NAME || 'MALLET IA'} +${selectedCount - 1}`
+			: ($config?.WEBUI_NAME || 'MALLET IA')
 		: placeholder;
 
 	let searchValue = '';

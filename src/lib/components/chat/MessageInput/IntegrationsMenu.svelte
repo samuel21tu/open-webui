@@ -49,7 +49,7 @@
 	export let selectedFilterIds: string[] = [];
 
 	export let showWebSearchButton = false;
-	export let webSearchEnabled = false;
+	export let webSearchEnabled = true;
 	export let showImageGenerationButton = false;
 	export let imageGenerationEnabled = false;
 	export let showCodeInterpreterButton = false;

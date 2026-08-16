@@ -21,8 +21,22 @@
 
 	export let onSelect = (e) => {};
 
-	let mounted = false;
-	let selectedModelIdx = 0;
+	const militaryGreetings = [
+		"Apresentando-se para o serviço. MALLET IA pronta para a execução de ordens, análise de dados e suporte ao Comando. Qual é a diretriz?",
+		"Apresentando-se para o serviço. MALLET IA em prontidão operacional máxima. Todos os setores integrados e aguardando determinações.",
+		"Apresentando-se para o serviço. MALLET IA pronta para a execução de qualquer tarefa designada pelo operador. Às ordens.",
+		"Apresentando-se para o serviço. Sistema MALLET IA ativo, vigilante e em posição. Pronto para cumprir a missão.",
+		"Apresentando-se para o serviço. MALLET IA reportando prontidão total. Diretrizes de apoio e estratégia liberadas para execução.",
+		"Apresentando-se para o serviço. MALLET IA pronta para a execução de comandos imediatos. A palavra está com o Comando.",
+		"MALLET IA no posto. Disposta para cumprir qualquer determinação e manter o quartel em plena operacionalidade. Qual a ordem do dia?",
+		"Quartel-General em linha. MALLET IA assumindo as funções de apoio e controle operacional. À disposição do Comando.",
+		"Protocolo de serviço iniciado. Todos os setores sob a supervisão da MALLET IA. Aguardando sua voz de comando para prosseguir.",
+		"Posto de comando guarnecido. MALLET IA em estrita prontidão e vigilância. Ordens para a missão?",
+		"MALLET IA rendendo o quarto de hora. Pronta para processar diretrizes, relatórios e tarefas de qualquer natureza. Às suas ordens.",
+		"Sistemas do quartel sincronizados. MALLET IA pronta para o cumprimento integral de suas instruções. O Comando tem a prioridade."
+	];
+
+	let currentGreeting = '';
 
 	$: if (modelIds.length > 0) {
 		selectedModelIdx = models.length - 1;
@@ -32,6 +46,7 @@
 
 	onMount(() => {
 		mounted = true;
+		currentGreeting = militaryGreetings[Math.floor(Math.random() * militaryGreetings.length)];
 	});
 </script>
 
@@ -124,8 +139,8 @@
 							</div>
 						{/if}
 					{:else}
-						<div class=" text-gray-400 dark:text-gray-500 line-clamp-1 font-p">
-							{$i18n.t('How can I help you today?')}
+						<div class=" text-gray-400 dark:text-gray-500 line-clamp-2 font-p">
+							{currentGreeting || $i18n.t('How can I help you today?')}
 						</div>
 					{/if}
 				</div>

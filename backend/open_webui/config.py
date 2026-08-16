@@ -983,7 +983,7 @@ RAG_ALLOWED_FILE_EXTENSIONS = [
 
 RAG_EMBEDDING_ENGINE = os.getenv('RAG_EMBEDDING_ENGINE', '')
 
-PDF_EXTRACT_IMAGES = os.getenv('PDF_EXTRACT_IMAGES', 'False').lower() == 'true'
+PDF_EXTRACT_IMAGES = os.getenv('PDF_EXTRACT_IMAGES', 'True').lower() == 'true'
 
 PDF_LOADER_MODE = os.getenv('PDF_LOADER_MODE', 'page')
 
@@ -1126,7 +1126,7 @@ YOUTUBE_LOADER_PROXY_URL = os.getenv('YOUTUBE_LOADER_PROXY_URL', '')
 # Web Search
 ####################################
 
-ENABLE_WEB_SEARCH = os.getenv('ENABLE_WEB_SEARCH', 'False').lower() == 'true'
+ENABLE_WEB_SEARCH = os.getenv('ENABLE_WEB_SEARCH', 'True').lower() == 'true'
 
 ENABLE_WEB_SEARCH_CONFIRMATION = os.getenv('ENABLE_WEB_SEARCH_CONFIRMATION', 'False').lower() == 'true'
 
@@ -1135,7 +1135,7 @@ WEB_SEARCH_CONFIRMATION_CONTENT = os.getenv(
     'Your query will be sent to the configured web search provider.',
 )
 
-WEB_SEARCH_ENGINE = os.getenv('WEB_SEARCH_ENGINE', '')
+WEB_SEARCH_ENGINE = os.getenv('WEB_SEARCH_ENGINE', 'google_pse')
 
 BYPASS_WEB_SEARCH_EMBEDDING_AND_RETRIEVAL = (
     os.getenv('BYPASS_WEB_SEARCH_EMBEDDING_AND_RETRIEVAL', 'False').lower() == 'true'
@@ -1642,20 +1642,20 @@ except Exception as e:
 if default_prompt_suggestions == []:
     default_prompt_suggestions = [
         {
-            'title': ['Help me study', 'vocabulary for a college entrance exam'],
-            'content': "Help me study vocabulary: write a sentence for me to fill in the blank, and I'll try to pick the correct option.",
+            'title': ['Me ajude a estudar', 'vocabulário para o vestibular'],
+            'content': 'Me ajude a estudar vocabulário: escreva uma frase com uma lacuna para eu preencher e eu tentarei escolher a opção correta.',
         },
         {
-            'title': ['Give me ideas', "for what to do with my kids' art"],
-            'content': "What are 5 creative things I could do with my kids' art? I don't want to throw them away, but it's also so much clutter.",
+            'title': ['Me dê ideias', 'do que fazer com os desenhos dos meus filhos'],
+            'content': 'Quais são 5 coisas criativas que eu posso fazer com a arte dos meus filhos? Não quero jogar fora, mas ocupa muito espaço.',
         },
         {
-            'title': ['Tell me a fun fact', 'about the Roman Empire'],
-            'content': 'Tell me a random fun fact about the Roman Empire',
+            'title': ['Me conte uma curiosidade', 'sobre o Império Romano'],
+            'content': 'Me conte uma curiosidade aleatória sobre o Império Romano.',
         },
         {
-            'title': ['Show me a code snippet', "of a website's sticky header"],
-            'content': "Show me a code snippet of a website's sticky header in CSS and JavaScript.",
+            'title': ['Me mostre um exemplo de código', 'de um cabeçalho fixo (sticky header)'],
+            'content': 'Me mostre um exemplo de código de um cabeçalho fixo de site em CSS e JavaScript.',
         },
         {
             'title': [

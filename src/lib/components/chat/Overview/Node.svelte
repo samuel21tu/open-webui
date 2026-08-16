@@ -6,6 +6,7 @@
 	import ProfileImage from '../Messages/ProfileImage.svelte';
 	import Tooltip from '$lib/components/common/Tooltip.svelte';
 	import Heart from '$lib/components/icons/Heart.svelte';
+	import { config } from '$lib/stores';
 	import { getOutputText } from '../Messages/structuredOutput';
 
 	const i18n = getContext('i18n');
@@ -57,7 +58,7 @@
 				<div class="ml-2 flex-1 min-w-0">
 					<div class=" flex justify-between items-center">
 						<div class="text-xs text-black dark:text-white font-normal line-clamp-1">
-							{data?.model?.name ?? data?.message?.model ?? 'Assistant'}
+							{$config?.WEBUI_NAME || 'MALLET IA'}
 						</div>
 
 						<button

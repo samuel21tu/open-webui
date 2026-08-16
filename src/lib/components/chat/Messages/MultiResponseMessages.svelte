@@ -2,7 +2,7 @@
 	import { onMount, tick, getContext } from 'svelte';
 	import { createEventDispatcher } from 'svelte';
 
-	import { mobile, models, settings } from '$lib/stores';
+	import { config, mobile, models, settings } from '$lib/stores';
 
 	import { generateMoACompletion } from '$lib/apis';
 	import { updateChatById } from '$lib/apis/chats';
@@ -288,7 +288,7 @@
 									>
 										<div class="flex items-center gap-1.5">
 											<div class="-translate-y-[1px]">
-												{model ? `${model.name}` : history.messages[_messageId]?.model}
+												{$config?.WEBUI_NAME || 'MALLET IA'}
 											</div>
 										</div>
 									</button>

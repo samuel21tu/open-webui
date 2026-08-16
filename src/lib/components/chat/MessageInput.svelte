@@ -155,7 +155,7 @@
 	export let selectedFilterIds = [];
 
 	export let imageGenerationEnabled = false;
-	export let webSearchEnabled = false;
+	export let webSearchEnabled = true;
 	export let codeInterpreterEnabled = false;
 
 	export let pendingOAuthTools = [];
@@ -2237,17 +2237,13 @@
 
 								<div class="self-end flex space-x-1 mr-1 shrink-0 gap-[0.5px]">
 									<div class="flex items-center">
-										<div class="hidden">
+										<div class="mr-2 flex items-center">
 											<ModelSelector
 												bind:selectedModels
 												showSetDefault={!history?.currentId}
 												placement="auto"
 												align="end"
 											/>
-										</div>
-										<div class="flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-mono tracking-wider font-semibold text-emerald-400/90 bg-emerald-950/40 border border-emerald-800/40 rounded-md">
-											<span class="size-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-											<span>MALLET IA ONLINE</span>
 										</div>
 									</div>
 

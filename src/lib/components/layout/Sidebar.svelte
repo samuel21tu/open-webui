@@ -78,6 +78,7 @@
 	import FolderModal from './Sidebar/Folders/FolderModal.svelte';
 	import PinnedModelList from './Sidebar/PinnedModelList.svelte';
 	import PinnedNoteList from './Sidebar/PinnedNoteList.svelte';
+	import BookOpen from '../icons/BookOpen.svelte';
 	import CalendarIcon from './Sidebar/icons/Calendar.svelte';
 	import ClockIcon from './Sidebar/icons/Clock.svelte';
 	import CodeIcon from './Sidebar/icons/Code.svelte';
@@ -94,7 +95,7 @@
 	import MoreHorizontalIcon from './Sidebar/icons/MoreHorizontal.svelte';
 
 	const BREAKPOINT = 768;
-	const DEFAULT_PINNED_ITEMS = ['notes', 'workspace'];
+	const DEFAULT_PINNED_ITEMS = ['notebook', 'notes', 'workspace'];
 
 	let scrollTop = 0;
 
@@ -149,6 +150,11 @@
 
 	const isMenuItemVisible = (id) => {
 		switch (id) {
+			case 'notebook':
+				return (
+					$user?.role === 'admin' ||
+					($user?.permissions?.workspace?.knowledge ?? true)
+				);
 			case 'notes':
 				return (
 					($config?.features?.enable_notes ?? false) &&
@@ -182,6 +188,7 @@
 
 	const getMenuItemMeta = (id) => {
 		const items = {
+			notebook: { label: 'Notebook (Arquivos)', href: '/workspace/knowledge', iconType: 'notebook' },
 			notes: { label: 'Notes', href: '/notes', iconType: 'note' },
 			workspace: { label: 'Workspace', href: '/workspace', iconType: 'workspace' },
 			automations: { label: 'Automations', href: '/automations', iconType: 'automations' },
@@ -192,6 +199,7 @@
 	};
 
 	const menuItemPathPrefixes = {
+		notebook: '/workspace/knowledge',
 		notes: '/notes',
 		workspace: '/workspace',
 		calendar: '/calendar',
@@ -1039,7 +1047,9 @@
 												: 'bg-black/[0.035] dark:bg-white/[0.045]'
 											: 'group-hover:bg-gray-50 dark:group-hover:bg-gray-900'}"
 									>
-										{#if itemId === 'notes'}
+										{#if itemId === 'notebook'}
+											<BookOpen className="size-4" strokeWidth="1.5" />
+										{:else if itemId === 'notes'}
 											<NotesIcon className="size-4" strokeWidth="1.5" />
 										{:else if itemId === 'workspace'}
 											<WorkspaceIcon className="size-4" strokeWidth="1.5" />
@@ -1249,7 +1259,9 @@
 										aria-label={$i18n.t(meta.label)}
 									>
 										<div class="self-center flex size-4 shrink-0 items-center justify-center">
-											{#if itemId === 'notes'}
+											{#if itemId === 'notebook'}
+												<BookOpen className="size-4" strokeWidth="1.5" />
+											{:else if itemId === 'notes'}
 												<NotesIcon className="size-4" strokeWidth="1.5" />
 											{:else if itemId === 'workspace'}
 												<WorkspaceIcon className="size-4" strokeWidth="1.5" />

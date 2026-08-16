@@ -19,8 +19,12 @@ services:
       - ${OPEN_WEBUI_PORT-3000}:8080
     environment:
       - 'OLLAMA_BASE_URL=http://ollama:11434'
+      - 'RAG_EMBEDDING_ENGINE=ollama'
       - 'WEBUI_SECRET_KEY='
       - 'WEBUI_NAME=MALLET IA'
+      - 'PDF_EXTRACT_IMAGES=True'
+      - 'ENABLE_WEB_SEARCH=True'
+      - 'WEB_SEARCH_ENGINE=google_pse'
       - 'DEFAULT_LOCALE=pt-BR'
     extra_hosts:
       - host.docker.internal:host-gateway
