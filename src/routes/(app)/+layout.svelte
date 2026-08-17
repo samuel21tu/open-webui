@@ -271,10 +271,11 @@
 			checkLocalDBChats(),
 			setBanners().catch((e) => console.error('Failed to load banners:', e)),
 			setTools().catch((e) => console.error('Failed to load tools:', e)),
-			setUserSettings(async () => {
-				await setModels().catch((e) => console.error('Failed to load models:', e));
-			}).catch((e) => console.error('Failed to load user settings:', e))
+			setUserSettings().catch((e) => console.error('Failed to load user settings:', e))
 		]);
+
+		// Load models in the background so slow model fetching/Ollama response doesn't block page load
+		setModels().catch((e) => console.error('Failed to load models:', e));
 
 		selectedTerminalId.set(localStorage.selectedTerminalId ?? null);
 
