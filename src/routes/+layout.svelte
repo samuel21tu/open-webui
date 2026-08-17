@@ -1173,8 +1173,9 @@
 				: [navigator.language || navigator.userLanguage];
 			const lang = backendConfig?.default_locale
 				? backendConfig.default_locale
-				: bestMatchingLanguage(languages, browserLanguages, 'en-US');
+				: bestMatchingLanguage(languages, browserLanguages, 'pt-BR');
 			changeLanguage(lang);
+			localStorage.setItem('locale', lang);
 			dayjs.locale(lang);
 		}
 
@@ -1294,7 +1295,7 @@
 
 <svelte:head>
 	<title>{$WEBUI_NAME}</title>
-	<link crossorigin="anonymous" rel="icon" href="{WEBUI_BASE_URL}/static/favicon.png" />
+	<link crossorigin="anonymous" rel="icon" href="{WEBUI_BASE_URL}/static/favicon.png?v=2" />
 
 	<meta name="apple-mobile-web-app-title" content={$WEBUI_NAME} />
 	<meta name="description" content={$WEBUI_NAME} />

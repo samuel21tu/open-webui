@@ -1205,7 +1205,7 @@ export const getPromptVariables = (user_name, user_location, user_email = '') =>
 		'{{CURRENT_TIME}}': getFormattedTime(),
 		'{{CURRENT_WEEKDAY}}': getWeekday(),
 		'{{CURRENT_TIMEZONE}}': getUserTimezone(),
-		'{{USER_LANGUAGE}}': localStorage.getItem('locale') || 'en-US'
+		'{{USER_LANGUAGE}}': localStorage.getItem('locale') || 'pt-BR'
 	};
 };
 

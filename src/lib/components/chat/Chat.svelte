@@ -605,6 +605,7 @@
 			const chatInput = document.getElementById('chat-input');
 			chatInput?.focus();
 		} else if (!embedded) {
+			loading = false;
 			await goto('/');
 		} else {
 			loading = false;
@@ -1936,6 +1937,8 @@
 		selectedModels = selectedModels.map((modelId) =>
 			$models.map((m) => m.id).includes(modelId) ? modelId : ''
 		);
+
+		loading = false;
 
 		const chatInput = document.getElementById('chat-input');
 		setTimeout(() => chatInput?.focus(), 0);

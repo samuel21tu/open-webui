@@ -315,7 +315,7 @@
 		}
 
 		if (text.includes('{{USER_LANGUAGE}}')) {
-			const language = localStorage.getItem('locale') || 'en-US';
+			const language = localStorage.getItem('locale') || 'pt-BR';
 			text = text.replaceAll('{{USER_LANGUAGE}}', language);
 		}
 
