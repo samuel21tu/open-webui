@@ -437,7 +437,7 @@
 		void openSettingsFromUrl();
 	}
 
-	$: if (loaded && ($user === undefined || $user === null)) {
+	$: if ($user === undefined || $user === null) {
 		void gotoAuth();
 	}
 

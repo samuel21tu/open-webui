@@ -20,7 +20,7 @@ services:
     environment:
       - 'OLLAMA_BASE_URL=http://ollama:11434'
       - 'RAG_EMBEDDING_ENGINE=ollama'
-      - 'WEBUI_SECRET_KEY='
+      - 'WEBUI_SECRET_KEY=mallet-ia-secret-key-2026'
       - 'WEBUI_NAME=MALLET IA'
       - 'PDF_EXTRACT_IMAGES=True'
       - 'ENABLE_WEB_SEARCH=True'
