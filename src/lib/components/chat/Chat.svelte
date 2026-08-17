@@ -745,13 +745,13 @@
 
 		try {
 			if (!$tools) {
-				tools.set(await getTools(localStorage.token));
+				tools.set(await getTools(localStorage.token).catch(() => []));
 			}
 			if (!$functions) {
-				functions.set(await getFunctions(localStorage.token));
+				functions.set(await getFunctions(localStorage.token).catch(() => []));
 			}
 			if (!$skills) {
-				skills.set(await getSkills(localStorage.token));
+				skills.set(await getSkills(localStorage.token).catch(() => []));
 			}
 			if (selectedModels.length !== 1 && !atSelectedModel) {
 				return;
@@ -1699,7 +1699,8 @@
 
 	const initNewChat = async () => {
 		console.log('initNewChat');
-		resetWebSearchConfirmation();
+		try {
+			resetWebSearchConfirmation();
 
 		// Mark the outgoing chat as read before resetting; in-place created chats
 		// keep chatIdProp undefined, so navigateHandler never marks them read.
@@ -1935,13 +1936,15 @@
 		}
 
 		selectedModels = selectedModels.map((modelId) =>
-			$models.map((m) => m.id).includes(modelId) ? modelId : ''
+			($models ?? []).map((m) => m.id).includes(modelId) ? modelId : ''
 		);
-
-		loading = false;
-
-		const chatInput = document.getElementById('chat-input');
-		setTimeout(() => chatInput?.focus(), 0);
+		} catch (e) {
+			console.error('Error during initNewChat:', e);
+		} finally {
+			loading = false;
+			const chatInput = document.getElementById('chat-input');
+			setTimeout(() => chatInput?.focus(), 0);
+		}
 	};
 
 	const loadChat = async () => {
